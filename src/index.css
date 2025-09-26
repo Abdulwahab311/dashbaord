@@ -1,0 +1,23 @@
+@import "tailwindcss";
+@import url("https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700;800&display=swap");
+
+/* Global font */
+html, body, #root {
+  font-family: "DM Sans", ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, "Apple Color Emoji", "Segoe UI Emoji";
+}
+
+/***** Hide scrollbars globally but keep scroll functional *****/
+/* Firefox */
+* {
+  scrollbar-width: none;
+}
+/* IE/Edge */
+* {
+  -ms-overflow-style: none;
+}
+/* Chrome/Safari/WebKit */
+*::-webkit-scrollbar {
+  width: 0;
+  height: 0;
+}
+
