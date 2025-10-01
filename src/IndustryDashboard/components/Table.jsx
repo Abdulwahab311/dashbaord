@@ -66,7 +66,7 @@ const longRows = [
       marketResearch: { done: true },
       legalDue: { done: true },
       technicalDue: { done: true },
-      floorplan: { textColor: "#0E1330", rightTag: "15 WK" },
+      floorplan: { Color: "#ff3c00ff", rightTag: "15 WK" },
       taxOptimization: { color: "#ff3c00ff", done: true },
       financing: { color: "#ff3c00ff", textColor: "#FFFFFF", rightTag: "2 WK" },
       exitStrategy: { color: "#ff3c00ff", done: true },
@@ -136,7 +136,7 @@ function ActiveDealsTable({ data = [], stages = [], compact = false }) {
                     className={`inline-block rounded-full bg-black text-white/90 ${
                       compact
                         ? "text-[8px] px-2 py-0.5"
-                        : "text-[10px] px-3 py-1"
+                        : "text-[10px] px-2 py-1"
                     }`}
                   >
                     {r.street}
@@ -264,7 +264,7 @@ export default function DealsPage() {
           <div className="mt-4">
             <ActiveDealsTable data={shortRows} stages={SHORT_STAGES} />
 
-            <div className="mt-3 flex flex-nowrap items-center gap-2 bg-[#181C3A] p-2 rounded-lg overflow-x-auto">
+            <div className="mt-3 flex flex-wrap items-center gap-2 bg-[#181C3A] p-2 rounded-lg overflow-x-hidden">
               {/* ...your tags... */}
             </div>
           </div>

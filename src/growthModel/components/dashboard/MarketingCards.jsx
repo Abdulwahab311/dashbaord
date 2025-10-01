@@ -189,7 +189,7 @@ export default function MarketingCards() {
             <span className="text-[7px] text-gray-300">{scaleCard.label}</span>
           </div>
           {/* CAC pill overlay - fixed top-right, ultra compact */}
-          <div className="absolute top-1.5 right-1.5 w-16 h-[42px]">
+          <div className="absolute top-7 right-0.5 w-16 h-[42px]">
             <div className="rounded border border-white/10 bg-gradient-to-b from-[#4E78C7] to-[#1E2E56] text-white px-1.5 shadow-md ">
               <div className="text-center text-[7px] tracking-widest">{payback.title}</div>
               <div className="text-center text-base font-extrabold leading-none">{payback.value}</div>

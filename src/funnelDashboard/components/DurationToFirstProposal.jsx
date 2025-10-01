@@ -2,14 +2,49 @@
 import React from 'react';
 import { BarChart, Bar, XAxis, YAxis, ResponsiveContainer, Cell, ReferenceLine } from 'recharts';
 
+// Custom single-bar shape that mirrors the bar above and below baseline
+const MirrorBar = (props) => {
+  const { x, y, width, height, payload, value } = props;
+  const color = payload?.color || '#999999';
+  const isRed = (color || '').toLowerCase() === '#ef4444' || payload?.colorName === 'red';
+
+  // Height magnitude for one side
+  const h = Math.max(0, height || 0);
+  // Baseline y: for positive values, baseline is y + height; for negative, baseline is y
+  const baselineY = (value >= 0 ? y + h : y);
+
+  const topY = baselineY - h;
+  const bottomY = baselineY;
+
+  const shouldDrawBottom = true;
+  const shouldDrawTop = true;
+
+  return (
+    <g>
+      {shouldDrawTop ? (
+        <rect x={x} y={topY} width={width} height={h} fill={color} rx={2} ry={2} />
+      ) : null}
+      {shouldDrawBottom ? (
+        <rect x={x} y={bottomY} width={width} height={h} fill={payload?.forceRed ? '#EF4444' : color} rx={2} ry={2} />
+      ) : null}
+    </g>
+  );
+};
+
 const SectionChart = ({ title, steps, revenues, data, bgClass, bottom }) => {
   const columnCount = Math.max(1, (bottom?.kpis?.length || 1));
   const columnPositions = Array.from({ length: Math.max(0, columnCount - 1) }, (_, i) => ((i + 1) / columnCount) * 100);
 
+  // Build mirrored series: force exactly one bar (except AFTERCARE) to show with red bottom
+  const chartData = (() => {
+    const allowForce = title !== 'AFTERCARE';
+    return data.map((d, idx) => ({ ...d, forceRed: allowForce && idx === 0 }));
+  })();
+
   return (
   <div className={`border-r border-slate-700 last:border-r-0`}>
     <div className={`px-3 py-2 ${bgClass}`}>
-      <div className="text-white font-semibold text-xs mb-1">{title}</div>
+      <div className="text-white font-semibold text-[11px] mb-1">{title}</div>
       <div className="flex justify-center gap-3 text-[10px] text-white/80 mb-1">
         {steps.map((s, i) => <span key={i}>{s}</span>)}
       </div>
@@ -23,7 +58,7 @@ const SectionChart = ({ title, steps, revenues, data, bgClass, bottom }) => {
     <div className={`${bgClass.replace('from-', 'from-').replace('to-', 'to-')} px-2 py-2`}>
       <div className="h-70">
         <ResponsiveContainer width="100%" height="100%">
-          <BarChart data={data} margin={{ top: 8, right: 6, bottom: 4, left: 6 }} barCategoryGap="0%" barGap={0}>
+          <BarChart data={chartData} margin={{ top: 8, right: 6, bottom: 4, left: 6 }} barCategoryGap="0%" barGap={0}>
             <XAxis dataKey="name" axisLine={false} tickLine={false} tick={false} height={0} />
             <YAxis domain={[-100, 100]} axisLine={false} tickLine={false} tick={false} width={0} />
             {[100, 80, 60, 40, 20, 0, -20, -40, -60, -80, -100].map(v => (
@@ -35,18 +70,21 @@ const SectionChart = ({ title, steps, revenues, data, bgClass, bottom }) => {
                 strokeWidth={0.5} 
               />
             ))}
-            <Bar dataKey="value" radius={[2, 2, 2, 2]} maxBarSize={40}>
-              {data.map((d, i) => <Cell key={i} fill={d.color} />)}
+            {/* Single bar with custom mirrored shape */}
+            <Bar dataKey="value" maxBarSize={40} shape={<MirrorBar />}>
+              {chartData.map((d, i) => (
+                <Cell key={i} fill={d.color} />
+              ))}
             </Bar>
           </BarChart>
         </ResponsiveContainer>
       </div>
     </div>
     {/* Attached KPI tile (part of the same column) */}
-    <div className={`${bgClass} px-3 py-2`}>
+    <div className={`${bgClass} px-3 py-5`}>
       {/* Generic KPI row for non-SALES */}
       {title !== 'SALES' && (
-        <div className="flex items-center gap-2 mt-8 ">
+        <div className="flex items-center gap-2 mt-9 ">
           {bottom?.highlight !== null && bottom?.highlight !== undefined ? (
             <span className="bg-red-500 text-white text-[10px] px-1.5 py-0.5 rounded">{bottom.highlight}</span>
           ) : null}
@@ -76,12 +114,12 @@ const SectionChart = ({ title, steps, revenues, data, bgClass, bottom }) => {
           {/* Below: remaining legend rows + grid */}
           <div className="mt-1 flex gap-3">
             <div className=" text-white/80 text-[8px] leading-4">
-              <div className="mb-8">
+              <div className="mb-2">
                 <div>CYCLETIME</div>
                 <div>SHORTEST/</div>
                 <div>LAST</div>
               </div>
-              <div className="mb-8">
+              <div className="mb-2">
                 <div>CYCLETIME</div>
               </div>
               <div>
@@ -90,8 +128,8 @@ const SectionChart = ({ title, steps, revenues, data, bgClass, bottom }) => {
                 <div>FUNNEL</div>
               </div>
             </div>
-            <div className="relative w-full">
-              <div className="w-full aspect-square border border-white/10 rounded" />
+            <div className="relative w-28 h-40">
+              <div className="w-full h-full border border-white/10 rounded" />
               {columnPositions.map((pos, idx) => (
                 <div key={idx} className="absolute top-0 bottom-0 w-px bg-white/10" style={{ left: `${pos}%` }} />
               ))}
@@ -102,8 +140,8 @@ const SectionChart = ({ title, steps, revenues, data, bgClass, bottom }) => {
         </div>
       ) : (
         // Default: only combined grid
-        <div className={`${title === 'AFTERCARE' ? 'mt-5' : ''} relative opacity-30 `}>
-          <div className="w-full aspect-square border border-white/10 rounded" />
+        <div className={`${title === 'AFTERCARE' ? 'mt-5' : ''} relative opacity-30 h-48 `}>
+          <div className="w-full h-full border border-white/10 rounded" />
           {columnPositions.map((pos, idx) => (
             <div key={idx} className="absolute top-0 bottom-0 w-px bg-white/10" style={{ left: `${pos}%` }} />
           ))}
@@ -237,8 +275,8 @@ const DurationToFirstProposal = () => {
       <div className="flex">
         {/* Y axis */}
         {/* Revenue label + Y axis */}
-        <div className="w-15 bg-[#090D28] ">
-          <div className="px-2 py-1 text-white text-[5px] text-center  mt-17">
+        <div className="w-10 bg-[#090D28] ">
+          <div className="px-2 py-1 text-white text-[5px] text-center  mt-12">
             TOTALE REVENUE
             <br />
             IN € MILLIONS

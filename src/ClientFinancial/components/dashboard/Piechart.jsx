@@ -21,7 +21,7 @@ const PieChartComponent = () => {
             data={pieData}
             cx="50%"
             cy="50%"
-            outerRadius={70}
+            outerRadius={45}
             fill="#8884d8"
             dataKey="value"
             labelLine={false}

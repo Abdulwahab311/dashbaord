@@ -42,8 +42,8 @@ export default function Gauge({ value = 10.8, min = 0, max = 20 }) {
   const currentAngle = startAngle + angleSpan * percent;
 
   return (
-    <div className="relative flex items-center justify-center w-[150px] h-[110px]">
-      <svg viewBox="0 0 200 140" className="w-[150px] h-[110px]">
+    <div className="relative flex items-center justify-center w-[170px] h-[150px]">
+      <svg viewBox="0 0 200 140" className="w-[170px] h-[150px]">
         {/* Background arc */}
         <path
           d={describeArc(cx, cy, radius, startAngle, endAngle)}
@@ -73,7 +73,7 @@ export default function Gauge({ value = 10.8, min = 0, max = 20 }) {
       {/* Center Text */}
       <div className="absolute text-center mt-5">
         <div className="text-white text-lg font-bold leading-none">{value}</div>
-        <div className="text-[10px] tracking-widest text-gray-400 mt-1">
+        <div className="text-[11px] tracking-widest text-gray-400 mt-1">
           MONTHS RUNWAY
         </div>
       </div>

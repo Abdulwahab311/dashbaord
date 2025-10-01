@@ -42,8 +42,8 @@ const endAngle = 480;    // thoda aur neeche tak lao
   const currentAngle = startAngle + angleSpan * percent;
 
   return (
-    <div className="relative flex items-center justify-center w-[120px] h-[90px]">
-      <svg viewBox="0 0 200 140" className="w-[120px] h-[90px]">
+    <div className="relative flex items-center justify-center w-[120px] h-[100px]">
+      <svg viewBox="0 0 200 140" className="w-[120px] h-[100px]">
         {/* Background arc */}
         <path
           d={describeArc(cx, cy, radius, startAngle, endAngle)}
@@ -73,7 +73,7 @@ const endAngle = 480;    // thoda aur neeche tak lao
       {/* Center Text */}
       <div className="absolute text-center mt-3">
         <div className="text-white text-lg font-bold leading-none">{value}</div>
-        <div className="text-[5px] tracking-widest text-gray-400 mt-1">
+        <div className="text-[6px] tracking-widest text-gray-400 mt-1">
           MONTHS RUNWAY
         </div>
       </div>

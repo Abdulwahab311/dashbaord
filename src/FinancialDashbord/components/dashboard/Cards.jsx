@@ -34,12 +34,12 @@ const StatCard = ({ title, value, note, change }) => {
   return (
     <div className="rounded-lg bg-[#090D28] border border-[#252B42] flex flex-col items-center text-center h-40">
       {/* Title */}
-      <div className="text-[12px] sm:text-[13px] font-medium tracking-widest text-gray-400 mt-2 sm:mt-3 truncate">
+      <div className="text-[12px] sm:text-[13px] font-medium tracking-widest text-gray-400 mt-2 sm:mt-6 truncate">
         {title}
       </div>
 
       {/* Value */}
-      <div className="text-white text-base sm:text-xl font-semibold truncate">
+      <div className="text-white mt-4 text-base sm:text-xl font-semibold truncate">
         {value}
       </div>
 

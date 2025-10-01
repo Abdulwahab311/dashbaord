@@ -20,11 +20,11 @@ const FunnelDashboard = () => {
           <OverviewFunnel />
         </div>
       </div>
-      <div className="mt-5 grid grid-cols-1 lg:grid-cols-2 gap-3">
+      <div className="mt-5 grid grid-cols-1 lg:grid-cols-3 gap-3">
         <div className="bg-[#090D28] rounded-lg">
           <UregencyTable />
         </div>
-        <div className="bg-[#090D28] rounded-lg">
+        <div className="bg-[#090D28] rounded-lg col-span-2">
           <DurationToFirstProposal />
         </div>
       </div>

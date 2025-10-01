@@ -3,7 +3,7 @@ import ScalingChart from "./GraphLine";
 import PieChartComponent from "./Piechart";
 import Wavechart from "./Wavechart";
 import LineChart from "./LineChart";
-import { Sparklines, SparklinesLine } from 'react-sparklines';
+import { Sparklines, SparklinesLine } from "react-sparklines";
 const SectionHeader = ({ text, bg }) => (
   <div
     className={`w-full bg-gradient-to-r from-[#000000] to-[#20A804] rounded-t-lg text-white text-xs font-semibold tracking-widest px-3 py-2 ${bg}`}
@@ -129,7 +129,7 @@ export default function Marketing() {
             />
           </div>
 
-         {/* Table below cards */}
+          {/* Table below cards */}
           <div className="mt-4 flex-1 overflow-auto">
             <div className="overflow-x-auto">
               <h1 className="text-sm sm:text-lg font-semibold p-2">
@@ -307,16 +307,16 @@ export default function Marketing() {
 
           {/* Charts Section */}
           <h1 className="mt-3 text-sm sm:text-lg font-semibold">Costs</h1>
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-2 mt-2">
+          <div className="grid grid-cols-1 lg:grid-cols-[70%_30%] p-1 gap-2 mt-2">
             {/* Scaling Chart */}
-            <div className="bg-[#181C3A] rounded-xl p-2 sm:p-4">
-              <div className="h-[200px] sm:h-[250px]">
+            <div className="bg-[#181C3A] rounded-xl p-2 ">
+              <div className="h-[200px] sm:h-[220px]">
                 <Wavechart />
               </div>
             </div>
 
             {/* Pie Chart */}
-            <div className="bg-[#181C3A] rounded-xl p-2 sm:p-4">
+            <div className="bg-[#181C3A] rounded-xl p-1 ">
               <div className="h-[200px] sm:h-[180px]">
                 <PieChartComponent />
               </div>

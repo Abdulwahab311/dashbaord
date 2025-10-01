@@ -64,8 +64,8 @@ const AveragePillar = ({ topDays = 3, baseDays = 7 }) => {
           <div className="absolute inset-x-0 bottom-0 h-[50%] z-10">
             <div className="absolute inset-0 bg-[#F97316]" />
             {/* subtle vertical dividers */}
-            <div className="absolute inset-y-0 left-1/3 w-px bg-black/10" />
-            <div className="absolute inset-y-0 left-2/3 w-px bg-black/10" />
+            <div className="absolute inset-y-0 left-1/3 w-px " />
+            <div className="absolute inset-y-0 left-2/3 w-px " />
             {/* soft shadow at top of the fill to match screenshot */}
             <div className="absolute top-0 left-0 right-0 h-5 bg-gradient-to-b from-black/30 to-transparent" />
             {/* soft shadow at bottom of the fill to blend into the bottom label */}

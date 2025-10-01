@@ -14,8 +14,6 @@ const GaugeChart = ({ current, goal, color }) => {
           stroke="#374151"
           strokeWidth="16"
           strokeLinecap=""
-          
-
         />
         {/* Colored arc */}
         <path
@@ -66,12 +64,10 @@ const GaugeDagen = ({ current, goal, color }) => {
   );
 };
 
-// Inline Pillar matching TotalPilar.jsx
 const PillarCard = () => (
-  <div className=" bg-[#090D28]   px-1 pt-3">
+  <div className=" bg-[#090D28]   px-2 pt-3">
     <div className="text-[15px] text-gray-100 text-center font-extralight uppercase  ">
       <div>Average</div>
-      
     </div>
 
     <div className="mt-4 space-y-3">
@@ -87,9 +83,9 @@ const PillarCard = () => (
 
     <div className="mt-4 flex-1 flex items-end justify-center">
       <div className="w-full h-[250px] rounded-lg bg-[#2A3354] relative overflow-hidden border border-[#3A456B]/40">
-        {Array.from({ length: 10 }).map((_, i) => (
+        {Array.from({ length: 8 }).map((_, i) => (
           <div key={`left-tick-${i}`} className="absolute left-2 z-20" style={{ top: 18 + i * 28 }}>
-            <div className={`${i === 4 ? 'w-6' : 'w-4'} h-[2px] rounded bg-white/80`} />
+            <div className={`${i === 3 ? 'w-6' : 'w-4'} h-[2px] rounded bg-white/80`} />
           </div>
         ))}
         <div className="absolute left-0 right-0 bottom-0  z-10">
@@ -100,32 +96,30 @@ const PillarCard = () => (
   </div>
 );
 
-const Dashboard = () => {
+const DesignOntwrep = () => {
   const [selectedPeriod, setSelectedPeriod] = useState('7 Days');
-  
+
   const metrics = [
-    { title: 'SOIL RESEARCH', current: 23, goal: 21, color: '#ef4444' },
-    { title: 'NITROGEN & ECOLOGY RESEARCH', current: 16, goal: 14, color: '#22c55e' },
-    { title: 'ASBESTOS INVENTORY\nARRANGEMENTS', current: 32, goal: 28, color: '#ef4444' },
-    { title: 'SURVEY REPORTS\nREQUESTS', current: 16, goal: 49, color: '#ef4444' },
-    { title: 'REQUEST A DEMOLITION QUOTE', current: 30, goal: 28, color: '#f59e0b', isDagen: true },
-    { title: 'USE OF OWN FUND OR FINANCING', current: 30, goal: 28, color: '#22c55e', isDagen: true },
+    { title: 'NITRATES ADVISUER RISICOBALEN', current: 16, goal: 1, color: '#22c55e' },
+    { title: 'AANBEMEN SELECTIEKEN', current: 16, goal: 14, color: '#22c55e' },
+    { title: 'VVE REGELS DUIDELIJK, VVE BEITERE AFMAKEN', current: 16, goal: 28, color: '#ef4444' },
+    { title: 'DSFHTEVITE TEKENINGEN VOOR VERUNNING AANVRAAG', current: 16, goal: 14, color: '#ef4444' },
+    { title: 'OFFERTE AANNEMER ONTVANGER', current: 16, goal: 7, color: '#f59e0b', isDagen: true },
+    { title: 'NUTS OVERLEIS', current: 16, goal: 21, color: '#22c55e', isDagen: true },
   ];
-  
+
   return (
     <div className=" p-1">
       <div className=" mx-auto">
-        <h1 className="text-xl font-bold text-white mb-3">PREPARATION & RESEARCH</h1>
-        
+        <h1 className="text-xl font-bold text-white mb-3">DESIGN ONTWERP & VERGUNNINGEN</h1>
+
         <div className="grid grid-cols-1 lg:grid-cols-4 gap-1">
-          {/* Left sidebar */}
           <div className="lg:col-span-1">
-            <div className="bg-[#090D28] rounded-xl">
+            <div className="bg-[#090D28] rounded-">
               <PillarCard />
             </div>
           </div>
-          
-          {/* Main grid */}
+
           <div className="lg:col-span-3 grid grid-cols-2 md:grid-cols-3 xl:grid-cols-3 gap-1">
             {metrics.map((metric, index) => (
               <div
@@ -136,17 +130,9 @@ const Dashboard = () => {
                   {metric.title}
                 </h3>
                 {metric.isDagen ? (
-                  <GaugeDagen
-                    current={metric.current}
-                    goal={metric.goal}
-                    color={metric.color}
-                  />
+                  <GaugeDagen current={metric.current} goal={metric.goal} color={metric.color} />
                 ) : (
-                  <GaugeChart
-                    current={metric.current}
-                    goal={metric.goal}
-                    color={metric.color}
-                  />
+                  <GaugeChart current={metric.current} goal={metric.goal} color={metric.color} />
                 )}
               </div>
             ))}
@@ -157,4 +143,4 @@ const Dashboard = () => {
   );
 };
 
-export default Dashboard;
+export default DesignOntwrep;

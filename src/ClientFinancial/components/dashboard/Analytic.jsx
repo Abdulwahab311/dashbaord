@@ -303,24 +303,23 @@ export default function Marketing() {
             />
           </div>
 
-          {/* Charts Section */}
-          <h1 className=" text-sm sm:text-lg font-semibold">Costs</h1>
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-2 mt-2 mb-2">
+          <h1 className="mt-3 text-sm sm:text-lg font-semibold">Costs</h1>
+          <div className="grid grid-cols-1 lg:grid-cols-[70%_30%] p-1 gap-2 mt-2">
             {/* Scaling Chart */}
-            <div className="bg-[#181C3A] rounded-xl p-2 sm:p-4">
-              <div className="h-[200px] sm:h-[250px]">
+            <div className="bg-[#181C3A] rounded-xl p-2 ">
+              <div className="h-[200px] sm:h-[220px]">
                 <Wavechart />
               </div>
             </div>
 
             {/* Pie Chart */}
-            <div className="bg-[#181C3A] rounded-xl p-2 sm:p-4">
-              <div className="h-[200px] sm:h-[250px]">
+            <div className="bg-[#181C3A] rounded-xl p-1 ">
+              <div className="h-[200px] sm:h-[180px]">
                 <PieChartComponent />
               </div>
             </div>
           </div>
-          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-2 mb-4">
+          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4  mt-1 gap-2 mb-4">
             <StatCard
               title="GROSS REVENUE"
               value="€5.172.595"

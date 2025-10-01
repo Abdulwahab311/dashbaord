@@ -88,7 +88,7 @@ function GaugeChartLikeCards({ value = 10.8, min = 0, max = 20 }) {
               display: 'none'
             },
             [`& .${gaugeClasses.valueArc}`]: {
-              stroke: '#00D351',
+              stroke: '',
               strokeWidth: 2,
               strokeLinecap: 'round'
             },
@@ -101,7 +101,7 @@ function GaugeChartLikeCards({ value = 10.8, min = 0, max = 20 }) {
           }}
         />
         <div className="absolute inset-0 flex flex-col items-center justify-center pointer-events-none">
-          <div className="font-extrabold" style={{ fontSize: '28px', color: '#00D351' }}>{clamped}</div>
+          <div className="font-extrabold" style={{ fontSize: '28px', color: '' }}>{clamped}</div>
           <div style={{ fontSize: '16px', fontWeight: 600, color: '#9E9FA7' }}>{valueMax}</div>
         </div>
       </div>
@@ -119,7 +119,7 @@ function Funnel() {
   ];
 
   return (
-    <div className="relative mt-4 ">
+    <div className="relative mt-20">
       {steps.map((step) => {
         const ml = (100 - step.width) / 2; // center each step
         return (

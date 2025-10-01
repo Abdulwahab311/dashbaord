@@ -2,6 +2,8 @@ import React from "react";
 import Cards from "../components/HealthCard";
 import Health from "../components/HealthGraphs";
 import Table from "../components/Table";
+import DurationPropertyDefault, { DurationProperty } from "../components/DurationProperty";
+import PropertyResale from "../components/PropertyResale";
 const IndustryDashboard = () => {
   return (
     <>
@@ -14,14 +16,18 @@ const IndustryDashboard = () => {
               <Cards />
             </div>
           </div>
-           <div>
-            <Health />
-          </div> 
+          <div className="grid grid-cols-2">
+      <DurationProperty/>
+      <PropertyResale/>
+    
+      </div>
             <div>
             <Table />
           </div> 
         </div>
       </div>
+     
+      
     </>
   );
 };

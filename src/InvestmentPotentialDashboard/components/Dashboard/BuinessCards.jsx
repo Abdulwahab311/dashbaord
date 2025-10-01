@@ -67,8 +67,8 @@ const SparkMiniRed = ({
 
 // Compact Stat Card
 const StatCard = ({ title, value, note, change, children }) => (
-  <div className="rounded-md bg-gradient-to-b from-black to-slate-700 border border-[#252B42]  flex flex-col items-center text-center min-h-[70px]">
-    <div className="text-[10px] font-medium tracking-wide text-gray-400 mb-0.5">
+  <div className="rounded-md bg-gradient-to-b from-black to-slate-700 border border-[#252B42]  flex flex-col  justify-center items-center text-center min-h-[70px]">
+    <div className="text-[13px] mt-3 font-medium tracking-wide text-gray-400 mb-0.5">
       {title}
     </div>
     <div className="flex items-center justify-center gap-1 mb-0.5">
@@ -110,7 +110,7 @@ export default function Cards() {
         {/* LEFT SECTION */}
         <div className="grid grid-rows-3 gap-2">
           <div className="rounded-md bg-[linear-gradient(180deg,#000000_0%,#20A804_100%)] border border-[#252B42] p-1 flex flex-col items-center text-center min-h-[40px]">
-            <div className="text-[10px] font-medium tracking-wide text-gray-400 mb-0.5 mt-10">
+            <div className="text-[10px] font-medium tracking-wide text-gray-400 mb-0.5 mt-6">
               TOTAL CONTRACT VALUE
             </div>
             <div className="text-white text-sm sm:text-3xl font-semibold">

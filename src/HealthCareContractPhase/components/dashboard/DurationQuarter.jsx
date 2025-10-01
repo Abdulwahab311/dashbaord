@@ -10,6 +10,31 @@ import {
   ResponsiveContainer
 } from 'recharts';
 
+// Custom legend to align square icon with text
+const RenderAlignedLegend = ({ payload }) => {
+  if (!payload) return null;
+  return (
+    <div className="w-full flex justify-end">
+      <ul className="flex items-center gap-3">
+        {payload.map((entry, index) => (
+          <li key={`item-${index}`} className="flex items-center gap-1">
+            <span
+              className="inline-block align-middle"
+              style={{
+                width: 10,
+                height: 10,
+                background: entry.color,
+                borderRadius: 2
+              }}
+            />
+            <span className="text-[10px] leading-none text-white/90 align-middle">{entry.value}</span>
+          </li>
+        ))}
+      </ul>
+    </div>
+  );
+};
+
 const DurationQuarter = () => {
   // Chart data based on the exact image description
   const chartData = [
@@ -73,7 +98,7 @@ const DurationQuarter = () => {
     <div className=" ">
       {/* Main Title */}
       <div className="mb-6">
-        <h1 className="text-white text-2xl lg:text-3xl font-bold tracking-wide">
+        <h1 className="text-white text-2xl lg:text-2xl font-bold tracking-wide">
           DURATION QUARTER DEVELOPMENT
         </h1>
       </div>
@@ -133,11 +158,11 @@ const DurationQuarter = () => {
                     }}
                   />
                   <Legend 
-                    wrapperStyle={{ color: '#F9FAFB', fontSize: '12px' }}
-                    iconType="rect"
+                    wrapperStyle={{ color: '#F9FAFB' }}
                     verticalAlign="top"
                     align="right"
-                    height={36}
+                    content={<RenderAlignedLegend />}
+                    height={28}
                   />
                   <Area
                     type="monotone"

@@ -8,7 +8,7 @@ const TotalPilar = () => {
         <div>EXIT</div>
       </div>
 
-      <div className="mt-4 space-y-3">
+      <div className="mt-4 space-y-10">
         <div className="rounded-md bg-[#0E1330] border  py-2 text-center shadow-[0_0_0_1px_rgba(24,211,89,0.3)]" style={{ borderColor: '#18D359' }}>
           <div className="text-[11px] text-gray-300">Goals</div>
           <div className="text-[11px] text-white font-semibold">28 DAYS</div>

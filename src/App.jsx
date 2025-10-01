@@ -20,7 +20,6 @@ import MarketingDashboard from "./maketing/pages/MarketingDashboard";
 import ClientHealthLayout from "./ClientHealthDashboard/layout/Layout";
 import ClientHealth from "./ClientHealthDashboard/pages/ClientHealth";
 import HealthCare2 from "./HealthCare2Dashbaord/pages/Dashboard"
-
 import ScoreBoardDashboard from './scoreBoard/pages/ScoreBoardDashboard';
 import FunnelDashboard from './funnelDashboard/pages/FunnelDashboard';
 const App = () => {
@@ -112,7 +111,6 @@ const App = () => {
               </InvestementLayout>
             }
           />
-
           <Route
             path="/businessmodel/dashboard"
             element={
@@ -121,7 +119,6 @@ const App = () => {
               </GrowthModelLayout>
             }
           />
-
           <Route
             path="/business/dashboard"
             element={
@@ -159,5 +156,4 @@ const App = () => {
     </>
   );
 };
-
 export default App;

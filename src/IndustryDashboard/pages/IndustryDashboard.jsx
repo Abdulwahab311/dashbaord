@@ -2,6 +2,8 @@ import React from "react";
 import Cards from "../components/IndustryCards";
 import Preperation from "../components/Preperations";
 import Table from "../components/Table";
+import DesignOntwrep from "../components/DesignOntwrep";
+import Pillar from "../components/Pilars";
 const IndustryDashboard = () => {
   return (
     <>
@@ -14,14 +16,19 @@ const IndustryDashboard = () => {
               <Cards />
             </div>
           </div>
-          <div>
+          <div className="grid grid-cols-3 gap-2 mt-2">
+            
             <Preperation />
+            <DesignOntwrep />
+            <Pillar />
+             
           </div>
            <div className="">
             <Table />
           </div>
         </div>
       </div>
+     
     </>
   );
 };

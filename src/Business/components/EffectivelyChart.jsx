@@ -1,5 +1,13 @@
-import React from 'react';
-import { ResponsiveContainer, LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip } from 'recharts';
+import React from "react";
+import {
+  ResponsiveContainer,
+  LineChart,
+  Line,
+  XAxis,
+  YAxis,
+  CartesianGrid,
+  Tooltip,
+} from "recharts";
 
 const data = [
   { x: 0, revCost: 20, labourProfit: 10, hourly: 15 },
@@ -17,15 +25,20 @@ const data = [
 
 const LegendDot = ({ color, label }) => (
   <div className="flex items-center gap-2 text-[10px] text-gray-300">
-    <span className="inline-block w-2 h-2 rounded-sm" style={{ backgroundColor: color }} />
+    <span
+      className="inline-block w-2 h-2 rounded-sm"
+      style={{ backgroundColor: color }}
+    />
     <span>{label}</span>
   </div>
 );
 
 const MetricCard = ({ title, value }) => (
-  <div className="bg-[#090D28] rounded-xl p-1 text-center">
-    <div className="text-[10px] text-gray-300 tracking-wide uppercase mb-1">{title}</div>
-    <div className="text-white text-xl font-semibold">{value}</div>
+  <div className="bg-[#090D28] rounded-2xl p-2 text-center min-h-[120px] flex flex-col items-center justify-center">
+    <div className="text-xs md:text-sm text-gray-300 tracking-wide uppercase mb-2">
+      {title}
+    </div>
+    <div className="text-white text-3xl md:text-4xl font-bold">{value}</div>
   </div>
 );
 
@@ -49,26 +62,66 @@ const EffectivelyChart = () => {
           <h3 className="text-white font-semibold text-sm">EFFECTIVITY</h3>
           <div className="flex items-center gap-4">
             <LegendDot color="#22D3EE" label="Effectivity revenue / costs" />
-            <LegendDot color="#9333EA" label="Labour effectivity revenue/ profit" />
+            <LegendDot
+              color="#9333EA"
+              label="Labour effectivity revenue/ profit"
+            />
             <LegendDot color="#3B82F6" label="Effective hourly wage" />
           </div>
         </div>
         <div className="h-44">
           <ResponsiveContainer width="100%" height="100%">
-            <LineChart data={data} margin={{ top: 10, right: 10, left: 0, bottom: 0 }}>
-              <CartesianGrid stroke="#2A3358" strokeDasharray="0" opacity={0.5} />
-              <XAxis dataKey="x" axisLine={{ stroke: '#2A3358' }} tickLine={false} tick={{ fill: '#9CA3AF', fontSize: 12 }} />
-              <YAxis axisLine={{ stroke: '#2A3358' }} tickLine={false} tick={{ fill: '#9CA3AF', fontSize: 12 }} />
-              <Tooltip content={<CustomTooltip />} cursor={{ stroke: 'rgba(255,255,255,0.1)' }} />
-              <Line type="monotone" dataKey="revCost" stroke="#22D3EE" strokeWidth={3} dot={false} />
-              <Line type="monotone" dataKey="labourProfit" stroke="#9333EA" strokeWidth={3} dot={false} />
-              <Line type="monotone" dataKey="hourly" stroke="#3B82F6" strokeWidth={3} dot={false} />
+            <LineChart
+              data={data}
+              margin={{ top: 10, right: 10, left: 0, bottom: 0 }}
+            >
+              <CartesianGrid
+                stroke="#2A3358"
+                strokeDasharray="0"
+                opacity={0.5}
+              />
+              <XAxis
+                dataKey="x"
+                axisLine={{ stroke: "#2A3358" }}
+                tickLine={false}
+                tick={{ fill: "#9CA3AF", fontSize: 12 }}
+              />
+              <YAxis
+                axisLine={{ stroke: "#2A3358" }}
+                tickLine={false}
+                tick={{ fill: "#9CA3AF", fontSize: 12 }}
+              />
+              <Tooltip
+                content={<CustomTooltip />}
+                cursor={{ stroke: "rgba(255,255,255,0.1)" }}
+              />
+              <Line
+                type="monotone"
+                dataKey="revCost"
+                stroke="#22D3EE"
+                strokeWidth={3}
+                dot={false}
+              />
+              <Line
+                type="monotone"
+                dataKey="labourProfit"
+                stroke="#9333EA"
+                strokeWidth={3}
+                dot={false}
+              />
+              <Line
+                type="monotone"
+                dataKey="hourly"
+                stroke="#3B82F6"
+                strokeWidth={3}
+                dot={false}
+              />
             </LineChart>
           </ResponsiveContainer>
         </div>
       </div>
 
-      <div className="grid grid-cols-1 md:grid-cols-3 gap-1">
+      <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
         <MetricCard title="EFFECTIVITY REVENUE / COSTS OR PROFIT" value="12" />
         <MetricCard title="LABOUR EFFECTIVITY" value="00" />
         <MetricCard title="REVENUE/PROFIT Divide Through Hours" value="00" />

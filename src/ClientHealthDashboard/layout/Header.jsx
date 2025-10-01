@@ -24,7 +24,7 @@ const Header = ({ onHamburgerClick }) => {
           <span className="text-sm">Back</span>
         </button>
       </div>
-      <div className="flex ml-15 text-base lg:text-lg">FINANCIAL. DASHBOARD </div>
+      <div className="flex ml-15 text-base lg:text-lg uppercase">Health Development Dashboard</div>
 
       {/* Center: Search bar */}
       <div className="flex-1 flex justify-end px-3 mr-7">

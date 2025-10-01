@@ -84,7 +84,7 @@ const DealsChart = () => {
       {/* Mini KPI cards below chart (outside dark bg) */}
       <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-2 md:gap-3 mt-4">
         {[
-          { title: 'HEALTHCARE DEALS', value: 0 },
+          { title: 'SELF FINANCED', value: 0 },
           { title: 'WITHIN DEADLINE', value: 7 },
           { title: 'EXTERNALFINANCING', value: 9 },
         ].map((k, i) => (

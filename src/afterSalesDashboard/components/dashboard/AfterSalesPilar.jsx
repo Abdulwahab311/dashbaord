@@ -5,7 +5,7 @@ const AfterSalesPilar = () => {
     <div className="grid grid-cols-1  bg-[#090D28]   px-2 pt-3 pb-4">
       <div className="text-[8px] text-gray-200 text-center font-semibold">AFTERSALES</div>
 
-      <div className="mt-4 space-y-3">
+      <div className="mt-4 space-y-7">
         <div className="rounded-md bg-[#0E1330] border px-3 py-2 text-center" style={{ borderColor: '#18D359' }}>
           <div className="text-[11px] text-gray-300">Goals</div>
           <div className="text-[11px] text-white font-semibold">28 DAYS</div>

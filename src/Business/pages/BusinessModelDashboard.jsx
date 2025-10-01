@@ -9,9 +9,8 @@ import EffectivelyChart from '../components/EffectivelyChart'
 const BusinessModelDashboard = () => {
   return (
     <>
-      <h3 className="text-sm text-white mb-2">Weekly</h3>
+      <h3 className="text-sm text-white mb-2">weekly</h3>
 
-      {/* Top 3 cards: 1 column on small, 3 on large */}
       <div className="grid grid-cols-1 lg:grid-cols-3 gap-1">
         <PerformanceChart />
         <TotalDeals />

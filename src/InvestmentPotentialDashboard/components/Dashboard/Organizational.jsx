@@ -30,11 +30,11 @@ const departments = sectors.map((s) => ({
 // Compact Department Card
 const DepartmentCard = ({ name, value, delta = "+2%" }) => (
   <div className="rounded-xl p-2 bg-gradient-to-b from-[#000000] to-[#090D28] text-center shadow w-full sm:w-20">
-    <div className="text-[clamp(7px,2vw,8px)] text-white font-semibold uppercase mb-0.5 truncate">
+    <div className="text-[clamp(8px,2vw,10px)] text-white font-semibold uppercase mb-0.5 truncate">
       {name}
     </div>
     <div className="flex items-center justify-center gap-1">
-      <span className="text-white text-[clamp(9px,2.5vw,10px)] font-bold">
+      <span className="text-white text-[clamp(10px,2.5vw,12px)] font-bold">
         {value}%
       </span>
       <span className="text-[clamp(6px,1.8vw,7px)] px-1 py-0.5 rounded bg-emerald-500/15 text-emerald-300 border border-emerald-400/20">

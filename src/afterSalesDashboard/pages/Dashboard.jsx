@@ -13,13 +13,13 @@ const Dashboard = () => {
     <>
       <div className="w-full grid grid-cols-17 gap-1 ">
         {/* Single row: Chart + three pillars */}
-        <div className="col-span-9 xl:col-span-8">
+        <div className="col-span-12 xl:col-span-11">
           <Chart />
         </div>
         <div className="col-span-15 xl:col-span-1 order-1">
           <TotalPilar />
         </div>
-        <div className="col-span-15 xl:col-span-7 order-2 min-w-0 overflow-hidden">
+        <div className="col-span-15 xl:col-span-4 order-2 min-w-0 overflow-hidden">
           <ConsectiveSteps />
         </div>
         <div className="col-span-15 xl:col-span-1 order-3">
