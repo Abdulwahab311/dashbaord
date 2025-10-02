@@ -91,6 +91,24 @@ const DurationQuarter = () => {
       goalColor: "#18D359",
       nowColor: "#18D359",
       barHeight: "170px" // 85% of 200px
+    },
+    {
+      title: "Signed Purchase Agreement",
+      goalValue: "7 Days",
+      nowValue: "7 Days",
+      barColor: "#18D359", // Green
+      goalColor: "#18D359",
+      nowColor: "#18D359",
+      barHeight: "170px" // 85% of 200px
+    },
+    {
+      title: "Signed Purchase Agreement",
+      goalValue: "7 Days",
+      nowValue: "7 Days",
+      barColor: "#18D359", // Green
+      goalColor: "#18D359",
+      nowColor: "#18D359",
+      barHeight: "170px" // 85% of 200px
     }
   ];
 

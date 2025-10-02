@@ -1,7 +1,7 @@
 import React from "react";
 import ScalingChart from "./GraphLine";
 import PieChartComponent from "./Piechart";
-import Wavechart from "./Wavechart";
+import Wavechart from "../../../FinancialDashbord/components/dashboard/Wavechart";
 import LineChart from "./LineChart";
 import { Sparklines, SparklinesLine } from "react-sparklines";
 const SectionHeader = ({ text, bg }) => (
@@ -45,7 +45,7 @@ const StatCard = ({ title, value, note, change, header }) => (
         </div>
       )}
 
-      <div className="text-white text-sm sm:text-xl font-semibold mb-1 truncate flex-shrink-0">
+      <div className="text-white text-sm sm:text-md font-semibold mb-1  flex-shrink-0">
         {value}
       </div>
 
@@ -104,7 +104,7 @@ export default function Marketing() {
             />
             <StatCard
               title="GROSS REVENUE + GROSS MARGIN"
-              value="€2.781.915 / 60%"
+              value="60%"
               change="+8%"
               note="vs last 3 months"
             />
@@ -334,13 +334,13 @@ export default function Marketing() {
             />
             <StatCard
               title="GROSS REVENUE + GROSS MARGIN"
-              value="€2.781.915 / 60%"
+              value=" 60%"
               change="+8%"
               note="vs last 3 months"
             />
             <StatCard
               title="GROSS REVENUE + GROSS MARGIN"
-              value="€2.781.915 / 60%"
+              value="60%"
               change="+8%"
               note="vs last 3 months"
             />

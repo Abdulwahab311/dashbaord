@@ -42,7 +42,7 @@ const StatCard = ({ title, value, note, change, big, bg }) => {
 
   return (
     <div
-      className={`relative rounded border border-[#252B42] p-3 flex flex-col items-center text-center
+      className={`relative rounded border border-[#252B42] p-3  flex flex-col items-center text-center
       ${big ? "h-46 w-full" : "w-full"}`}
       style={{
         background: bg || "transparent",
@@ -114,13 +114,14 @@ export default function Cards() {
     <div className="flex flex-col xl:flex-row gap-3 w-full max-w-full">
       {/* ==== LEFT COLUMN - Net Cash Position ==== */}
       <div className="grid grid-cols-2 gap-2 w-full xl:w-60 flex-shrink-0 grid-rows-3">
-        <div className="col-span-2 row-span-2">
+        <div className="col-span-2 row-span-2 ">
           <StatCard
             big
             title="NET (FREE) CASH POSITION"
             value="€7.345.273"
             change="+12%"
             note="vs last 3 months"
+            className="mt-3"
           />
         </div>
         <StatCard

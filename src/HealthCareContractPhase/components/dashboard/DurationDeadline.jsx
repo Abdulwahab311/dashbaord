@@ -89,7 +89,7 @@ const AveragePillar = ({ topDays = 3, baseDays = 7 }) => {
 
 const DurationDeadline = () => {
   return (
-    <div className=" px-2 rounded-2xl  w-full xl:w-[560px]">
+    <div className=" px-2 rounded-2xl  w-full">
       <div className="px-2">
         <h2 className="text-white text-[22px] lg:text-[22px] font-bold tracking-wide">
           Duration Deadlines <span className="font-semibold">– Internal Research</span>

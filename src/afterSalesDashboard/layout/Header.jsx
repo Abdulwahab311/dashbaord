@@ -17,7 +17,7 @@ const Header = ({ onHamburgerClick }) => {
    
   };
 
-  const headerTitle = titles[location.pathname] || "ZORG EXIT + AFTERSALES";
+  const headerTitle = titles[location.pathname] || "Healthcare 1st contractphase";
 
 
   return (

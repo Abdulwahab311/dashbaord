@@ -1,7 +1,7 @@
-import React from 'react';
-import { ResponsiveContainer, PieChart, Pie, Cell } from 'recharts';
+import React from "react";
+import { ResponsiveContainer, PieChart, Pie, Cell } from "recharts";
 
-const COLORS = ['#265BFF', '#22D3EE', '#E4489A', '#9333EA'];
+const COLORS = ["#265BFF", "#22D3EE", "#E4489A", "#9333EA"];
 
 const Legend = ({ items }) => (
   <div className="w-full text-[10px] text-gray-300 space-y-1">
@@ -38,7 +38,6 @@ const Legend = ({ items }) => (
   </div>
 );
 
-
 const Card = ({ title, children }) => (
   <div className="bg-[#090D28] rounded-xl p-2 border border-[#222948] h-full flex flex-col">
     <div className="text-gray-200 text-xs font-semibold mb-1">{title}</div>
@@ -46,11 +45,23 @@ const Card = ({ title, children }) => (
   </div>
 );
 
-const PiePanel = ({ title, data, subtitle, innerBg = false, showLegend = true }) => (
+const PiePanel = ({
+  title,
+  data,
+  subtitle,
+  innerBg = false,
+  showLegend = true,
+}) => (
   <Card title={title}>
-    <div className={`${innerBg ? 'bg-[#181C3A]' : ''} rounded-lg p-2 h-full flex flex-col`}>
+    <div
+      className={`${
+        innerBg ? "" : ""
+      } rounded-lg p-2 h-full flex flex-col`}
+    >
       {subtitle ? (
-        <div className="text-center text-[10px] text-gray-200 mb-1 font-semibold">{subtitle}</div>
+        <div className="text-center text-[10px] text-gray-200 mb-1 font-semibold">
+          {subtitle}
+        </div>
       ) : null}
       {/* ✅ Aspect ratio for responsive sizing */}
       <div className="aspect-square w-full">
@@ -67,7 +78,10 @@ const PiePanel = ({ title, data, subtitle, innerBg = false, showLegend = true })
               stroke="none"
             >
               {data.map((entry, index) => (
-                <Cell key={`cell-${index}`} fill={COLORS[index % COLORS.length]} />
+                <Cell
+                  key={`cell-${index}`}
+                  fill={COLORS[index % COLORS.length]}
+                />
               ))}
             </Pie>
           </PieChart>
@@ -80,37 +94,46 @@ const PiePanel = ({ title, data, subtitle, innerBg = false, showLegend = true })
 
 const LeadsPanel = () => {
   const leads = [
-    { name: 'Short', value: 75 },
-    { name: 'Long', value: 25 },
+    { name: "Short", value: 75 },
+    { name: "Long", value: 25 },
   ];
-  return <PiePanel title="Short/long" data={leads} innerBg showLegend={false} subtitle="insight per category" />;
+  return (
+    <PiePanel title="Short/long" data={leads} innerBg showLegend={false} />
+  );
 };
 
 const PieChats = () => {
   const revenue = [
-    { name: 'Category 1', value: 50000 },
-    { name: 'Category 2', value: 25000 },
-    { name: 'Category 3', value: 15000 },
+    { name: "Category 1", value: 50000 },
+    { name: "Category 2", value: 25000 },
+    { name: "Category 3", value: 15000 },
   ];
 
   const costs = [
-    { name: 'Category 1', value: 50000 },
-    { name: 'Category 2', value: 25000 },
-    { name: 'Category 3', value: 10000 },
+    { name: "Category 1", value: 50000 },
+    { name: "Category 2", value: 25000 },
+    { name: "Category 3", value: 10000 },
   ];
 
   const profits = [
-    { name: 'Category 1', value: 50000 },
-    { name: 'Category 2', value: 25000 },
-    { name: 'Category 3', value: 10000 },
+    { name: "Category 1", value: 50000 },
+    { name: "Category 2", value: 25000 },
+    { name: "Category 3", value: 10000 },
   ];
 
   return (
-    <div className="w-full grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-3 overflow-hidden items-stretch">
-      <LeadsPanel />
-      <PiePanel title="Revenue" data={revenue} subtitle="insight per category" innerBg />
-      <PiePanel title="Costs" data={costs} subtitle="insight per category" innerBg />
-      <PiePanel title="Profits" data={profits} subtitle="insight per category" innerBg />
+    <div className="w-full">
+      {/* ✅ Heading */}
+      <h2 className="text-sm sm:text-base font-semibold text-gray-200 mb-3">
+        INSIGHT PER CATEGORY
+      </h2>
+
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-3 overflow-hidden items-stretch">
+        <LeadsPanel />
+        <PiePanel title="Revenue" data={revenue} innerBg />
+        <PiePanel title="Costs" data={costs} innerBg />
+        <PiePanel title="Profits" data={profits} innerBg />
+      </div>
     </div>
   );
 };
