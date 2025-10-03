@@ -70,7 +70,7 @@ const Departments = () => {
         <div className="rounded-xl mt-2 h-[18rem] p-2 bg-[#252A51] flex flex-col sm:flex-row gap-2 relative">
           {/* Title - Positioned at top */}
           <div className="absolute top-1 left-0 right-0 text-center z-10">
-            <h2 className="text-white text-[10px] font-semibold tracking-widest uppercase">
+            <h2 className="text-white text-[14px] font-semibold tracking-widest uppercase">
               DEPARTMENTS AND PROCESSES OPTIMISATION
             </h2>
           </div>
