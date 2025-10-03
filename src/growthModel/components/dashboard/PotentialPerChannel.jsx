@@ -45,7 +45,7 @@ const SummarySpark = () => {
             width={chartWidth}
             area
             color="#DB2777"
-            margin={{ top: 0, bottom: -6, left: -6, right: -3 }}
+            margin={{ top: 0, bottom: 0, left: -6, right: -3 }}
             sx={{
               [`& .${areaElementClasses.root}`]: { 
                 opacity: 0.2,
@@ -112,7 +112,7 @@ export default function PotentialPerChannel() {
                 <span>VS LAST 3 MONTHS</span>
               </div>
             </div>
-            <div className=" mt-3">
+            <div className="mt-auto w-full flex items-end justify-center h-6 ">
               <SummarySpark />
             </div>
           </Card>
@@ -127,7 +127,7 @@ export default function PotentialPerChannel() {
                 <span>VS LAST 3 MONTHS</span>
               </div>
             </div>
-            <div className=" mt-3">
+            <div className=" mt-1.5">
               <SummarySpark />
             </div>
           </Card>

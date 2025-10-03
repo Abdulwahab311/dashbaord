@@ -273,7 +273,7 @@ export default function Cards() {
               value="$1,866.67"
               change="+3%"
             >
-              <div className="mt-auto w-full flex items-end justify-center h-4 ">
+              <div className="mt-auto w-full flex items-end justify-center h-6 ">
                 <SparkMini />
               </div>
             </StatCard>
