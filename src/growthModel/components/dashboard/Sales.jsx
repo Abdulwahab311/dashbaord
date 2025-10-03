@@ -111,11 +111,13 @@ function GaugeChartLikeCards({ value = 10.8, min = 0, max = 20 }) {
 
 function Funnel() {
   const steps = [
-    { label: "LEADS", value: 1200, width: 92 },
-    { label: "CALLS", value: 521, width: 75 },
-    { label: "MEETINGS", value: 62, width: 62 },
-    { label: "CONTRACTS SENT", value: 50, width: 52 },
-    { label: "CLOSES", value: 10, width: 46 }
+    { label: "LEADS", value: 1200, width: 100 },
+    { label: "CALLS", value: 521, width: 90 },
+    { label: "MEETINGS", value: 203, width: 75 },
+    { label: "CONTRACTS SENT", value: 50, width: 65 },
+    { label: "Deal Signed", value: 4, width: 55 },
+    { label: "ONBORDING", value: 10, width: 65 },
+
   ];
 
   return (
@@ -123,9 +125,9 @@ function Funnel() {
       {steps.map((step) => {
         const ml = (100 - step.width) / 2; // center each step
         return (
-          <div key={step.label} className="relative" style={{ marginLeft: `${ml}%`, width: `${step.width}%` }}>
+          <div key={step.label} className="relative text-[10px]" style={{ marginLeft: `${ml}%`, width: `${step.width}%` }}>
             <div
-              className="bg-gradient-to-r from-[#000000] to-[#00D394] relative h-10 text-white flex items-center px-4 rounded-md shadow-[0_8px_18px_rgba(0,0,0,0.35)]"
+              className="bg-gradient-to-r from-[#191919] to-[#00D394] relative h-10 text-white flex items-center px-4 rounded-md shadow-[0_8px_18px_rgba(0,0,0,0.35)]"
               
             >
               <span className="text-[10px] tracking-widest opacity-90">{step.label}</span>

@@ -2,8 +2,11 @@ import React, { useRef, useState, useEffect } from "react";
 import { Sparklines, SparklinesLine } from "react-sparklines";
 import PieChartComponent from "./Piechart";
 import ScalingChart from "./ScallingChart";
-import { SparkLineChart } from '@mui/x-charts/SparkLineChart';
-import { areaElementClasses, lineElementClasses } from '@mui/x-charts/LineChart';
+import { SparkLineChart } from "@mui/x-charts/SparkLineChart";
+import {
+  areaElementClasses,
+  lineElementClasses,
+} from "@mui/x-charts/LineChart";
 const SectionHeader = ({ text, bg }) => (
   <div
     className={`w-full rounded-t-lg text-white text-xs font-semibold tracking-widest py-1 ${bg}`}
@@ -17,18 +20,32 @@ const SparkMini = ({
   const containerRef = useRef(null);
   const [width, setWidth] = useState(120);
 
-  // ✅ ResizeObserver for responsive width
   useEffect(() => {
     if (!containerRef.current) return;
+
+    // ✅ ResizeObserver for container width
     const observer = new ResizeObserver((entries) => {
       if (entries[0]) {
-        setWidth(entries[0].contentRect.width);
+        requestAnimationFrame(() => {
+          setWidth(entries[0].contentRect.width);
+        });
       }
     });
     observer.observe(containerRef.current);
-    return () => observer.disconnect();
-  }, []);
 
+    // ✅ Window resize (for zoom in/out)
+    const handleResize = () => {
+      if (containerRef.current) {
+        setWidth(containerRef.current.offsetWidth);
+      }
+    };
+    window.addEventListener("resize", handleResize);
+
+    return () => {
+      observer.disconnect();
+      window.removeEventListener("resize", handleResize);
+    };
+  }, []);
   return (
     <div
       ref={containerRef}
@@ -56,43 +73,91 @@ const SparkMini = ({
   );
 };
 
-// ✅ Sparkline Component (Red for Financial Model and Other Cards, No Side Margin)
+// ✅ Sparkline Component (Red for Financial Model and Other Cards)
 const SparkMiniRed = ({
-  data = [5, 10, 5, 20, 30, 4, 6, 12, 25, 18, 40, 15],
-}) => (
-  <Sparklines data={data} width={120} height={15} margin={0}>
-    <SparklinesLine color="#FF3B61" />
-  </Sparklines>
-);
+  data = [120, 135, 110, 145, 130, 160, 140, 125, 155, 170, 150, 105],
+}) => {
+  const containerRef = useRef(null);
+  const [width, setWidth] = useState(120);
+
+  useEffect(() => {
+    if (!containerRef.current) return;
+
+    const observer = new ResizeObserver((entries) => {
+      if (entries[0]) {
+        requestAnimationFrame(() => {
+          setWidth(entries[0].contentRect.width);
+        });
+      }
+    });
+    observer.observe(containerRef.current);
+
+    const handleResize = () => {
+      if (containerRef.current) {
+        setWidth(containerRef.current.offsetWidth);
+      }
+    };
+    window.addEventListener("resize", handleResize);
+
+    return () => {
+      observer.disconnect();
+      window.removeEventListener("resize", handleResize);
+    };
+  }, []);
+
+  return (
+    <div
+      ref={containerRef}
+      className="w-full h-5 flex items-end rounded-b-md overflow-hidden"
+    >
+      <SparkLineChart
+        data={data}
+        width={width}
+        height={20}
+        area
+        color="#FF3B61"
+        margin={{ top: 0, bottom: 0, left: 0, right: 0 }}
+        sx={{
+          [`& .${areaElementClasses.root}`]: {
+            opacity: 0.15,
+            filter: "drop-shadow(0 2px 4px rgba(255, 59, 97, 0.3))",
+          },
+          [`& .${lineElementClasses.root}`]: {
+            strokeWidth: 1.8,
+            filter: "drop-shadow(0 1px 2px rgba(255, 59, 97, 0.4))",
+          },
+        }}
+      />
+    </div>
+  );
+};
 
 // Compact Stat Card
 const StatCard = ({ title, value, note, change, children }) => (
-  <div className="rounded-md bg-gradient-to-b from-black to-slate-700 border border-[#252B42]  flex flex-col  justify-center items-center text-center min-h-[70px]">
-    <div className="text-[13px] mt-3 font-medium tracking-wide text-gray-400 mb-0.5">
-      {title}
-    </div>
-    <div className="flex items-center justify-center gap-1 mb-0.5">
-      <span className="text-white text-md sm:text-base font-semibold">
-        {value}
-      </span>
-      {change && (
-        <span
-          className={`text-[6px] font-medium rounded px-1 py-[1px] ${
-            change.startsWith("-")
-              ? "text-red-400 bg-red-500/20"
-              : "text-green-400 bg-green-500/20"
-          }`}
-        >
-          {change}
-        </span>
-      )}
-    </div>
-    {children && (
-      <div className="w-full flex-1 flex items-center justify-center">
-        {children}
+  <div className="rounded-md bg-gradient-to-b from-black to-slate-700 border border-[#252B42] flex flex-col justify-between items-center text-center min-h-[70px] overflow-hidden">
+    <div className="flex-1 flex flex-col justify-center items-center w-full">
+      <div className="text-[13px] mt-3 font-medium tracking-wide text-gray-400 mb-0.5">
+        {title}
       </div>
-    )}
-    {note && <span className="text-gray-500 text-[6px] mt-0.5">{note}</span>}
+      <div className="flex items-center justify-center gap-1 mb-0.5">
+        <span className="text-white text-md sm:text-base font-semibold">
+          {value}
+        </span>
+        {change && (
+          <span
+            className={`text-[6px] font-medium rounded px-1 py-[1px] ${
+              change.startsWith("-")
+                ? "text-red-400 bg-red-500/20"
+                : "text-green-400 bg-green-500/20"
+            }`}
+          >
+            {change}
+          </span>
+        )}
+      </div>
+      {note && <span className="text-gray-500 text-[6px] mt-0.5">{note}</span>}
+    </div>
+    {children && <div className="w-full h-5">{children}</div>}
   </div>
 );
 
@@ -216,31 +281,31 @@ export default function Cards() {
         </div>
 
         {/* PIE CHARTS */}
-        <div className="grid grid-cols-1 sm:grid-cols-3 gap-2 bg-[#252A51] rounded-lg">
-          <StatCard
-            title={<span className="text-white text-sm">REVENUE</span>}
-            value=""
-          >
-            <div className="h-24 w-full">
+        <div className="grid grid-cols-1 sm:grid-cols-3 gap-2 bg-[#252A51] rounded-lg p-2">
+          <div className="rounded-md bg-gradient-to-b from-black to-slate-700 border border-[#252B42] flex flex-col items-center text-center overflow-hidden">
+            <div className="text-white text-sm font-medium tracking-wide mt-3 mb-2">
+              REVENUE
+            </div>
+            <div className="w-full flex-1 flex items-center justify-center pb-2">
               <PieChartComponent />
             </div>
-          </StatCard>
-          <StatCard
-            title={<span className="text-white text-sm">COSTS</span>}
-            value=""
-          >
-            <div className="h-24 w-full">
+          </div>
+          <div className="rounded-md bg-gradient-to-b from-black to-slate-700 border border-[#252B42] flex flex-col items-center text-center overflow-hidden">
+            <div className="text-white text-sm font-medium tracking-wide mt-3 mb-2">
+              COSTS
+            </div>
+            <div className="w-full flex-1 flex items-center justify-center pb-2">
               <PieChartComponent />
             </div>
-          </StatCard>
-          <StatCard
-            title={<span className="text-white text-sm">PROFIT</span>}
-            value=""
-          >
-            <div className="h-24 w-full">
+          </div>
+          <div className="rounded-md bg-gradient-to-b from-black to-slate-700 border border-[#252B42] flex flex-col items-center text-center overflow-hidden">
+            <div className="text-white text-sm font-medium tracking-wide mt-3 mb-2">
+              PROFIT
+            </div>
+            <div className="w-full flex-1 flex items-center justify-center pb-2">
               <PieChartComponent />
             </div>
-          </StatCard>
+          </div>
         </div>
       </div>
 
@@ -277,7 +342,7 @@ export default function Cards() {
                 },
               ].map((card, index) => (
                 <StatCard key={index} {...card} className="h-24 w-full text-xs">
-                  <div className="mt-auto w-full flex items-end justify-center h-6 -mb-1">
+                  <div className="mt-auto w-full flex items-end justify-center h-6 ">
                     <SparkMiniRed />
                   </div>
                 </StatCard>

@@ -52,7 +52,7 @@ const Fte = () => {
           </div>
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-3 items-center">
             {/* Left: Pie */}
-            <div className="h-[10rem] sm:h-[12rem]">
+            <div className="h-[10rem] sm:h-[13rem]">
               <ResponsiveContainer width="100%" height="100%">
                 <PieChart>
                   <Tooltip content={<CustomTooltip />} />

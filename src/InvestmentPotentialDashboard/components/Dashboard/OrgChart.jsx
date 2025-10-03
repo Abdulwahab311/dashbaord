@@ -75,7 +75,7 @@ const IndependencyQuadrant = () => {
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-2 items-center">
         {/* Left: Chart */}
         <div className="rounded-lg p-2 relative">
-          <div className="h-[10rem] sm:h-[12rem] md:h-[14rem]">
+          <div className="h-[10rem] sm:h-[12rem] md:h-[15rem]">
             <ResponsiveContainer width="100%" height="100%">
               <PieChart>
                 <Tooltip content={<CustomTooltip />} />
