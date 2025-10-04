@@ -116,7 +116,7 @@ function Funnel() {
     { label: "MEETINGS", value: 203, width: 75 },
     { label: "CONTRACTS SENT", value: 50, width: 65 },
     { label: "Deal Signed", value: 4, width: 55 },
-    { label: "ONBORDING", value: 10, width: 65 },
+    { label: "ONBOARDING", value: 10, width: 65 },
 
   ];
 
